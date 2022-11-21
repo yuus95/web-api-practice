@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Hello</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<p th:text="'안녕하세요. ' + ${data}">영양분</p>
+<div class="tempClass">
+
+</div>
+
+
+<script  type="text/template" id="simple">
+    {{#data}}
+    {{phone}}
+    {{name}}
+    {{/data}}
+</script>
+
+<script type="x-tmpl-mustache" id="simpleHello">
+    <h3> Hello</h3>
+</script>
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js">
+</script>
+<script src="/simple.js"></script>
+</body>
+</html>
