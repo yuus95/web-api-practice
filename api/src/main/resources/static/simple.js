@@ -12,6 +12,18 @@ $(function(){
         }
     })
 
+    $.ajax({
+        url: "/temp/time", // 클라이언트가 HTTP 요청을 보낼 서버의 URL 주소
+        method: "GET",
+        data:{
+            time : "2022-11-07"
+        },
+        dataType: "json", // 서버에서 보내줄 데이터의 타입
+        success: (data) =>{
+            console.log("data 11 ", data)
+        }
+    })
+
 function render(data){
     const  html = $('#simple').html()
     const tempResult = Mustache.render(html,data)
