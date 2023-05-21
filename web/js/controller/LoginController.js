@@ -13,20 +13,20 @@ export default class LoginController {
 
     eventBinding() {
         this.loginForView.on("@login", (data) => this.login(data))
+        this.loginCheck();
     }
 
     async login({detail}) {
         console.log(detail);
-        let email = detail.email;
-        let password = detail.password;
-        console.log("email", email);
-        console.log("password", password);
+        const email = detail.email;
+        const password = detail.password;
+
         try {
             const response = await fetch("http://localhost:8080/login", {
                 method: "POST", // GET, POST, PUT 등 HTTP 메소드를 지정하세요.
                 headers: {
                     Accept: "application/json",
-                    // ContentType: "application/json" */// 요청의 Content-Type을 지정하세요.
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
                     email: email,
@@ -37,9 +37,10 @@ export default class LoginController {
             if (!response.ok) {
                 throw new Error("Request failed!"); // 에러 처리
             }
+            const token = await response.text();
+            this.saveTokenToStorage(token)
+            this.loginCheck();
 
-            console.log(response); // 응답 데이터 출력 (개발 시 참고용)
-            // 원하는 동작 수행
         } catch (error) {
             console.error(error); // 에러 메시지 출력
         }
@@ -52,5 +53,15 @@ export default class LoginController {
 // 토큰 값을 웹 스토리지에서 가져오는 함수
     getTokenFromStorage() {
         return localStorage.getItem('jwt'); // 로컬 스토리지에서 토큰 값을 가져옵니다.
+    }
+
+    loginCheck() {
+        let localToken = this.getTokenFromStorage();
+
+        console.log("localToken", localToken)
+
+        if (localToken != null) {
+            // this.loginForView.hide();
+        }
     }
 }
