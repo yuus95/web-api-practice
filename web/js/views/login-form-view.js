@@ -1,8 +1,5 @@
-import { qs} from "./helper.js";
+import {qs} from "./helper.js";
 import View from "./view.js";
-
-const tag = "[Tag]"
-
 
 export default class LoginFormView extends View {
     constructor() {
@@ -23,7 +20,6 @@ export default class LoginFormView extends View {
         event.preventDefault()
         const email = this.emailInput.value;
         const password = this.passwordInput.value;
-        console.log(email, password);
-        this.emit("@login",{email, password})
+        this.emit("@login", {email, password})
     }
 }
