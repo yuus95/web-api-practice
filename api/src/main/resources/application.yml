@@ -1,8 +1,24 @@
 spring:
-  devtools:
-    livereload:
+  h2:
+    console:
       enabled: true
-  freemarker:
-    cache: false
-  thymeleaf:
-    cache: false
+      path: /h2-console
+
+  datasource:
+    driverClassName:  org.h2.Driver
+    url: jdbc:h2:~/spring-fruit # embedded Mode : db 데이터 저장 위치 :  ~/spring-qna-db
+          #spring.datasource.url=jdbc:h2:mem:test # In-Memory mode
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+logging:
+  level:
+    org.hibernate:
+      sql: debug

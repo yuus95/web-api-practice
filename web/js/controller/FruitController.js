@@ -27,7 +27,6 @@ export default class FruitController {
             if( response.status != 201){
                 throw new Error("Reqeust Failed")
             }
-            console.log(response.status);
         } catch (error) {
             console.error(error);
         }
