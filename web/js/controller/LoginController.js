@@ -57,11 +57,9 @@ export default class LoginController {
 
     loginCheck() {
         let localToken = this.getTokenFromStorage();
-
-        console.log("localToken", localToken)
-
         if (localToken != null) {
-            // this.loginForView.hide();
+            this.loginForView.hide();
         }
     }
+
 }
