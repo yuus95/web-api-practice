@@ -1,19 +1,14 @@
 package com.example.webapi.repository;
 
 import com.example.webapi.Entitiy.Fruit;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Repository
-public class FruitJpaRepository {
+public interface FruitJpaRepository extends JpaRepository<Fruit, Long> {
 
-    @PersistenceContext
-    private EntityManager em;
-
-    public Fruit save(Fruit fruit) {
-        em.persist(fruit);
-        return fruit;
-    }
+    Fruit save(Fruit fruit);
 }

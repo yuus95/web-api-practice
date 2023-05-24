@@ -17,10 +17,10 @@ class FruitJpaRepositoryTest {
 
     @Autowired
     FruitJpaRepository fruitJpaRepository;
+
     @Test
     void save() {
         Fruit fruit = new Fruit("사과", "레드");
         fruitJpaRepository.save(fruit);
-
     }
 }
